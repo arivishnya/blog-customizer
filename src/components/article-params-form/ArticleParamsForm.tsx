@@ -6,7 +6,7 @@ import {
 	defaultArticleState,
 	OptionType,
 } from '../../constants/articleProps';
-import { useOutsideClickClose } from './hooks/useOutsideClickClose';
+import { useClose } from '../../hooks/useClose';
 
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
@@ -27,11 +27,10 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const rootRef = useRef<HTMLDivElement>(null);
 
-	useOutsideClickClose({
+	useClose({
 		isOpen: isMenuOpen,
-		rootRef,
 		onClose: () => setIsMenuOpen(false),
-		onChange: setIsMenuOpen,
+		rootRef,
 	});
 
 	return (
