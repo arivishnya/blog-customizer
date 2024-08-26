@@ -1,4 +1,4 @@
-import { useState, useRef, Fragment } from 'react';
+import { useState, useRef } from 'react';
 import { clsx } from 'clsx';
 
 import {
@@ -24,30 +24,30 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 
 	const [userParameters, setUserParameters] =
 		useState<UserParameters>(defaultArticleState);
-	const [isOpen, setIsOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const rootRef = useRef<HTMLDivElement>(null);
 
 	useOutsideClickClose({
-		isOpen,
+		isOpen: isMenuOpen,
 		rootRef,
-		onClose: () => setIsOpen(false),
-		onChange: setIsOpen,
+		onClose: () => setIsMenuOpen(false),
+		onChange: setIsMenuOpen,
 	});
 
 	return (
 		<div ref={rootRef}>
 			<ArrowButton
-				isOpen={isOpen}
+				isOpen={isMenuOpen}
 				onClick={() => {
-					setIsOpen(!isOpen);
+					setIsMenuOpen(!isMenuOpen);
 				}}
 			/>
-			<aside className={clsx(styles.container, { [styles.open]: isOpen })}>
+			<aside className={clsx(styles.container, { [styles.open]: isMenuOpen })}>
 				<form
 					className={styles.form}
 					onSubmit={(ev) => {
 						ev.preventDefault();
-						setIsOpen(false);
+						setIsMenuOpen(false);
 						onChangeStyle(userParameters);
 					}}>
 					<Text as='h2' size={31} weight={800} uppercase>

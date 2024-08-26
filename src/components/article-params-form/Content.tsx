@@ -86,7 +86,7 @@ export const Content: FC<Content> = (props) => {
 		<>
 			{contents.map((content, cIndex) => {
 				return (
-					<div className={styles.content} key={`content_cIndex`}>
+					<div className={styles.content} key={`content_${cIndex}`}>
 						{content.label && (
 							<Text size={12} weight={800} uppercase>
 								{content.label}
