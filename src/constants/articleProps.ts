@@ -1,3 +1,7 @@
+export interface UserParameters {
+	[key: string]: OptionType;
+}
+
 export const fontFamilyClasses = [
 	'open-sans',
 	'ubuntu',
